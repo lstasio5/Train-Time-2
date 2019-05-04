@@ -11,21 +11,41 @@ var config = {
 firebase.initializeApp(config);
 
 var database = firebase.database();
+var currentTime = moment(currentTime).format("hh:mm")
+
 
 $( document ).ready(function() {
-  var currentTime = moment().calendar();
-  console.log(currentTime);
-
   var displayDate = function () {
-    document.querySelector("#timenow").innerHTML = "Current Time:" + currentTime;
+    document.querySelector("#timenow").innerHTML = "Current Time: " + currentTime;
  
   }
+  console.log(currentTime);
 
   displayDate();
 
 });
 
+//To find next train time and minutes away using moment
+
+//Psuedo Code- Having issues with this
+
+// Need to find difference in minutes between current time and next train time
+// Need to find the next train arrival time
+
+// Need to display that in the table on the top
+
+
 //To display next arrival times and minutes away in html
+const freq = [45, 60, 74]
+
+
+// const endTime = moment(startTime, 'HH:mm:ss').add(freq, 'minutes').format('HH:mm');
+// const endTime2 = moment(startTime, 'HH:mm:ss').add(freq2, 'minutes').format('HH:mm');
+// const endTime3 = moment(startTime, 'HH:mm:ss').add(freq3, 'minutes').format('HH:mm');
+
+// console.log (endTime);
+// console.log (endTime2);
+// console.log (endTime3);
 
 
 //initial values
@@ -62,27 +82,12 @@ database.ref().push({
 
 });
 
-// //  database.ref().on("child_added", function(snapshot) {
+// This is correctly populating in FireBase
 
-//    var sv = childSnapshot.val();
+// Need to work on displaying new train schedule in top table
 
 
-//    // Console.loging the last train
-//    console.log(sv.name);
-//    console.log(sv.destination);
-//    console.log(sv.firstTime);
-//    console.log(sv.frequency);
 
-//    // Change the HTML to reflect
-//    $("#train-name").text(sv.name);
-//    $("#destination").text(sv.destination);
-//    $("firstTime").text(sv.firstTime);
-//    $("#frequency").text(sv.frequency);
-
-//    // Error handling
-//  }, function(errorObject) {
-//    console.log("Errors handled: " + errorObject.code);
-//  });
 
 
 
